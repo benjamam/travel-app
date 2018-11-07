@@ -1,6 +1,6 @@
 # TravelApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This app is designed using Google Cloud APIs including: Maps Javascript API, Geocoding API
 
 ## Development server
 
