@@ -1,0 +1,19 @@
+<div id="home">
+  <p>Where have you been?</p>
+  <label>City:
+    <input [(ngModel)]="location.city" placeholder="City">
+  </label><br />
+  <label>Country:
+    <input [(ngModel)]="location.country" placeholder="country">
+  </label><br />
+  <button class="btn" (click)="add(location)">Save</button>
+
+  <p *ngIf="places.length > 0">You have just added: {{ places[places.length-1].fullName }}</p>
+
+  <agm-map [latitude]="coord.lattitude" [longitude]="coord.longitude" [zoom]="zoom">
+    <agm-marker *ngFor="let place of places" [latitude]="place.coordinates.lattitude" [longitude]="place.coordinates.longitude"
+      [label]="place.city">
+    </agm-marker>
+    <!-- <agm-marker [latitude]="coord.lattitude" [longitude]="coord.longitude"></agm-marker> -->
+  </agm-map>
+</div>
