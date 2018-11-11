@@ -33,12 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.cityField.nativeElement.focus();
     this._countryService.getCountries().subscribe((countries: Country[]) => {
-      console.log('raw data', countries);
-      console.log('first', countries[0]);
       this.location.countryList = countries.map(x => x.name);
-      console.log('country list: ', this.location.countryList);
-      // this.location.countryList = ['test', 'test2'];
-      // console.log('country list updated', this.location.countryList);
     });
   }
 
