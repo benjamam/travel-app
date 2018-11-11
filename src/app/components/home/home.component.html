@@ -1,19 +1,29 @@
 <div id="home">
-  <p>Where have you been?</p>
-  <label>City:
-    <input [(ngModel)]="location.city" placeholder="City">
-  </label><br />
-  <label>Country:
-    <input [(ngModel)]="location.country" placeholder="country">
-  </label><br />
-  <button class="btn" (click)="add(location)">Save</button>
+  <div class="form">
+    <div class="form-inline">
+      <div class="form-group mb-2">
+        <label>City</label>
+        <input class="form-control" [(ngModel)]="location.selectedCity" placeholder="City" #city>
+      </div>
+      <div class="form-group mb-2">
+        <label>Country</label>
+        <select class="custom-select" (change)="updateCountry($event.target.value)">
+          <option *ngFor="let country of location.countryList" value={{country}}>{{ country }}</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="add(location)">Save</button>
 
-  <p *ngIf="places.length > 0">You have just added: {{ places[places.length-1].fullName }}</p>
 
-  <agm-map [latitude]="coord.lattitude" [longitude]="coord.longitude" [zoom]="zoom">
-    <agm-marker *ngFor="let place of places" [latitude]="place.coordinates.lattitude" [longitude]="place.coordinates.longitude"
-      [label]="place.city">
-    </agm-marker>
-    <!-- <agm-marker [latitude]="coord.lattitude" [longitude]="coord.longitude"></agm-marker> -->
-  </agm-map>
+  </div>
+  <div *ngIf="places.length > 0">
+    <span>You just added: <i>{{ places[places.length-1].fullName }}</i> <button class="btn btn-danger btn-sm" (click)="remove()">Remove</button></span>
+  </div>
+  <div class="text-center">
+    <agm-map [latitude]="coord.lattitude" [longitude]="coord.longitude" [zoom]="zoom">
+      <agm-marker *ngFor="let place of places" [latitude]="place.coordinates.lattitude" [longitude]="place.coordinates.longitude"
+        [label]="place.city">
+      </agm-marker>
+    </agm-map>
+  </div>
 </div>

@@ -1,6 +1,12 @@
 export class LocationSearch {
-    city: string;
-    country: string;
+    selectedCity: string;
+    selectedCountry: string;
+    countryList: string[];
+}
+
+export class Country {
+    name: string;
+    code: string;
 }
 
 export class MapCoordinates {
