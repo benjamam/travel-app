@@ -1,4 +1,4 @@
-import { Country } from '../app/components/home/location';
+import { Country } from '../app/models/location';
 export const COUNTRIES: Country[] = [
     {
         'name': 'United States',

@@ -4,8 +4,10 @@ export class CoordResponse {
 }
 
 class Results {
+    address_components: AddressComponent[];
     geometry: Geometry;
     formatted_address: string;
+    place_id: string;
 }
 
 class Geometry {
@@ -15,4 +17,10 @@ class Geometry {
 class Location {
     lat: number;
     lng: number;
+}
+
+class AddressComponent {
+    long_name: string;
+    short_name: string;
+    types: string[];
 }

@@ -1,7 +1,7 @@
 export class LocationSearch {
     selectedCity: string;
     selectedCountry: string;
-    countryList: string[];
+    countryList: Country[];
 }
 
 export class Country {

@@ -1,6 +1,7 @@
 <div id="home">
   <div class="form">
     <div class="form-inline">
+      <h4>Where have you been?</h4>
       <div class="form-group mb-2">
         <label>City</label>
         <input class="form-control" [(ngModel)]="location.selectedCity" placeholder="City" #city>
@@ -8,7 +9,7 @@
       <div class="form-group mb-2">
         <label>Country</label>
         <select class="custom-select" (change)="updateCountry($event.target.value)">
-          <option *ngFor="let country of location.countryList" value={{country}}>{{ country }}</option>
+          <option *ngFor="let country of location.countryList" value={{country.code}}>{{ country.name }}</option>
         </select>
       </div>
     </div>
@@ -25,5 +26,14 @@
         [label]="place.city">
       </agm-marker>
     </agm-map>
+  </div>
+  <div class="text-center">I want to go somewhere...
+    <button class="btn btn-primary" (click)="suggestion('different')">Different</button>
+    <button class="btn btn-primary" (click)="suggestion('similar')">Similar</button>
+  </div>
+  <div *ngIf="citySuggestion" class="text-center">
+    <h3>We recommend... {{ citySuggestion.city }}!!</h3>
+    <p>{{ citySuggestion.cityDescription }}</p>
+    <a href='{{ citySuggestion.infoLink }}' target="_blank">Learn more</a>
   </div>
 </div>
