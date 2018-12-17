@@ -1,7 +1,8 @@
 <div id="home">
   <div class="form">
+
+    <h4>Where have you been?</h4>
     <div class="form-inline">
-      <h4>Where have you been?</h4>
       <div class="form-group mb-2">
         <label>City</label>
         <input class="form-control" [(ngModel)]="location.selectedCity" placeholder="City" #city>
@@ -12,27 +13,29 @@
           <option *ngFor="let country of location.countryList" value={{country.code}}>{{ country.name }}</option>
         </select>
       </div>
+      <div class="form-group mb-2">
+        <button class="btn btn-primary" (click)="add(location)">Save</button>
+      </div>
     </div>
-    <button class="btn btn-primary" (click)="add(location)">Save</button>
 
 
   </div>
   <div *ngIf="places.length > 0">
     <span>You just added: <i>{{ places[places.length-1].fullName }}</i> <button class="btn btn-danger btn-sm" (click)="remove()">Remove</button></span>
   </div>
-  <div class="text-center">
+  <div class="text-center" id="map">
     <agm-map [latitude]="coord.lattitude" [longitude]="coord.longitude" [zoom]="zoom">
       <agm-marker *ngFor="let place of places" [latitude]="place.coordinates.lattitude" [longitude]="place.coordinates.longitude"
         [label]="place.city">
       </agm-marker>
     </agm-map>
   </div>
-  <div class="text-center">I want to go somewhere...
+  <div class="text-center" id="suggestion-selector">I want to go somewhere...
     <button class="btn btn-primary" (click)="suggestion('different')">Different</button>
     <button class="btn btn-primary" (click)="suggestion('similar')">Similar</button>
   </div>
-  <div *ngIf="citySuggestion" class="text-center">
-    <h3>We recommend... {{ citySuggestion.city }}!!</h3>
+  <div *ngIf="citySuggestion" class="text-center" id="suggestion">
+    <h3>I recommend ... {{ citySuggestion.city }}!</h3>
     <p>{{ citySuggestion.cityDescription }}</p>
     <a href='{{ citySuggestion.infoLink }}' target="_blank">Learn more</a>
   </div>

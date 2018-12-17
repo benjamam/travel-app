@@ -1,9 +1,25 @@
 #home{
-    padding: 2%;
+    background-color: white;
+    color: #4A89DC;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 1%;
+    font-family: 'Playfair Display', serif;
 }
 
-@media (min-width: 576px){
-    #add-btn{
-        display: inline-block;
-    }
+.form-group{
+    margin-right: 1%;
+}
+
+#suggestion {
+    margin-top:1%;
+}
+
+#map {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+a{
+    color: #ED5565;
 }
